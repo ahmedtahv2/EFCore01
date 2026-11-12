@@ -4,7 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            using ApplicationDbContext dbContext = new ApplicationDbContext();
+
+            bool isCreated = dbContext.Database.EnsureCreated();
+
+            if (isCreated)
+            {
+                Console.WriteLine(
+                    "Database created successfully!");
+            }
+            else
+            {
+                Console.WriteLine(
+                    "Database already exists!");
+            }
         }
     }
 }
